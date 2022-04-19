@@ -1,4 +1,5 @@
 require_relative 'middleware/logger'
+require_relative 'format_time'
 require_relative 'app'
 
 use AppLogger, logdev: File.expand_path('log/app.log', __dir__)

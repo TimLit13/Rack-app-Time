@@ -6,8 +6,6 @@ class FormatTime
                    minute: "%M", 
                    second: "%S" }.freeze
 
-  attr_reader :errors_in_formats
-
   def initialize(params)
     @params = params
     @user_formats = []
@@ -26,6 +24,10 @@ class FormatTime
   def time_now
     time_format = @user_formats.join('-')
     Time.now.strftime(time_format)
+  end
+
+  def valid?
+    @errors_in_formats.any?
   end
   
   private

@@ -15,7 +15,7 @@ class App
     user_time_format = FormatTime.new(request.params['format'])
     user_time_format.call
 
-    if user_time_format.errors_in_formats.any?
+    if user_time_format.valid?
       create_response(400, ["Unknown format #{user_time_format.errors_in_formats.join} (400)"])
     else
       create_response(200, [user_time_format.time_now])

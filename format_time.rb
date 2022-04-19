@@ -10,16 +10,12 @@ class FormatTime
 
   def initialize(params)
     @params = params
+    @user_formats = []
+    @errors_in_formats = []
   end
 
   def call(*env)
     query_string = parse_formats(@params)
-    @user_formats = []
-    @errors_in_formats = []
-
-    puts '*' * 20
-    puts query_string
-    puts '*' * 20
     
     query_string.each do |format|
       format_sym = format.to_sym
